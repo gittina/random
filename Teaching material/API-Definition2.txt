@@ -1,0 +1,42 @@
+swagger: '2.0'
+info:
+  title: Lab5 exercise
+  description: definition of api in lab 5
+  version: "1.0.0"
+# the domain of the service
+host: <put here address>
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /
+produces:
+  - application/json
+  - text
+consumes:
+  - application/json
+# the APIs
+paths:
+  /world:
+    get:
+      summary: it says hello to the world
+      description: it shows a page with a constant string "Hello world"
+      responses:
+        200:
+          description: Greetings to the world
+
+  /person/male:
+    post:
+      summary: Greetings to a Sir
+      description: It requires a parameter with the name of the user and it returns a a page with personalsed greetings to a Sir
+      parameters:
+        - name: username
+          in: formData
+          description: name of the user
+          required: true
+          type: string
+      responses:
+        200:
+          description: Greetings to a Sir
+        406:
+          description: Greetings to a Sir, when param username is not sent
